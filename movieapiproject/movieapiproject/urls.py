@@ -17,7 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-
+from app.views import Allmovies,Addmovie,Updatamovie,Deletemovie
+from app import views
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('',views.apioverview),
+    path('Allmovies/',Allmovies.as_view(),name='Allmovies'),
+    path('Addmovie/',Addmovie.as_view(),name='Addmovie'),
+    path('Updatamovie/update/<int:pk>/',Updatamovie.as_view(),name='Updatamovie'),
+    path('Deletemovie/delete/<int:pk>/',Deletemovie.as_view(),name='Deletemovie'),
+    path('serchbycategory/',views.serchbycategory,name='serchbycategory')
 ]
